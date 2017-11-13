@@ -1,0 +1,25 @@
+#Options +FollowSymLinks
+IndexIgnore /
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^(.+)/$
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+RewriteCond %{REQUEST_URI} !^/(web)
+RewriteRule ^assets/(.*)$ /web/assets/$1 [L]
+RewriteRule ^css/(.*)$ web/css/$1 [L]
+RewriteRule ^fonts/(.*)$ web/fonts/$1 [L]
+RewriteRule ^admin/css/(.*)$ web/admin/css/$1 [L]
+RewriteRule ^js/(.*)$ web/js/$1 [L]
+RewriteRule ^robots.txt(.*)$ robots.txt [L]
+RewriteRule ^images/(.*)$ web/images/$1 [L]
+RewriteRule ^admin/js/(.*)$ web/admin/js/$1 [L]
+RewriteRule ^upload/(.*)$ upload/$1 [L]
+RewriteRule ^banners/(.*)$ web/banners/$1 [L]
+RewriteRule ^wp-content/(.*)$ wp-content/$1 [L]
+RewriteRule (.*) /web/$1
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /web/index.php
